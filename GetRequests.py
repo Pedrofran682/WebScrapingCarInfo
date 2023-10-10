@@ -34,7 +34,7 @@ carInfo2Extract : list[str] = ["l2 motor", "l2 d desempenho-rodas"]
 for carInfo in carInfo2Extract:
     liCarTable : ResultSet[element.Tag] = soup.find_all("li", {"class": carInfo})
     for div in liCarTable:
-        # Within each div, find the first table element, if it exists
+        # Within each div, find the first table element, if it exists.
         table : element.Tag = div.find('table')
 
         row : element.Tag
