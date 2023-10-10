@@ -42,7 +42,7 @@ for carInfo in carInfo2Extract:
             columns = row.find_all('td')
             text : str = ""
 
-            # build a table to diplay the results - it's only for debug and understand the problem
+            # build a table to diplay the results - it's only for debug and understand the problem.
             if len(columns) == 1:
                 print(f"\n{columns[0].text.strip():>40}")
             else: 
