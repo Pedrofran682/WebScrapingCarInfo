@@ -1,0 +1,4 @@
+.vscode
+TempCsv/
+.git/
+**/__pycache__
