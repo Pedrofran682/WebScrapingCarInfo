@@ -25,6 +25,7 @@ def GetCarPageInfo(carId : int, baseUrl: str = "https://www.shopcar.com.br/ficha
     return BeautifulSoup(response.content, 'html.parser')
 
 def GetCarName(soup : BeautifulSoup) -> str:
+    print("Getting car name...")
     divCarName : ResultSet[element.Tag] =  soup.find_all("div", {"class": "img-principal"})
     for divCar in divCarName:
         spanText : element.Tag
@@ -32,8 +33,10 @@ def GetCarName(soup : BeautifulSoup) -> str:
             carName : str = spanText.text.strip() 
             print(f"Car name: {carName}")
             return carName
+    print("Car name was not found!")
 
 def GetCarInfoTable(soup : BeautifulSoup, carInfo2Extract : list[str] = ["l2 motor", "l2 d desempenho-rodas"]) -> dict[str, str]:
+    print("Getting car info")
     dictToBeUpload  : dict = {}
     for carInfo in carInfo2Extract:
         liCarTable : ResultSet[element.Tag] = soup.find_all("li", {"class": carInfo})
@@ -60,6 +63,7 @@ def GetCarInfoTable(soup : BeautifulSoup, carInfo2Extract : list[str] = ["l2 mot
     return dictToBeUpload
 
 def GetCarMeanPrice(soup : BeautifulSoup) -> float:
+    print("Getting car mean price")
     liCarPrice : ResultSet[element.Tag] = soup.find_all("li", {"class": "tabela"})
     li : element.Tag
     for li in liCarPrice:
